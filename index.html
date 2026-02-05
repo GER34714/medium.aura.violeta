@@ -1,4 +1,5 @@
-```html
+               WEB MODO DEMO 
+**** CIBORG 347 LANDIGN PAGE Y WEB DESINGS. ****
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -26,8 +27,6 @@
   <style>
     :root{
       --bg:#070712;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.09);
       --border: rgba(255,255,255,.14);
       --txt:#f4f3ff;
       --muted: rgba(244,243,255,.72);
@@ -43,101 +42,103 @@
       --hero-img: url("https://iili.io/fDm5Uhv.md.png");
       --overlay-img: url("https://iili.io/fDmrgEv.md.png");
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
       background:
-        radial-gradient(1200px 700px at 12% 8%, rgba(155,123,255,.22), transparent 60%),
-        radial-gradient(900px 700px at 90% 30%, rgba(255,91,214,.18), transparent 62%),
-        radial-gradient(800px 700px at 50% 110%, rgba(49,208,170,.10), transparent 60%),
+        radial-gradient(1200px 700px at 12% 8%, rgba(155,123,255,.26), transparent 60%),
+        radial-gradient(900px 700px at 90% 30%, rgba(255,91,214,.20), transparent 62%),
+        radial-gradient(800px 700px at 50% 110%, rgba(49,208,170,.12), transparent 60%),
         var(--bg);
       color: var(--txt);
       overflow-x:hidden;
       position:relative;
     }
 
-    /* Overlay (sin franjas sólidas, con buena calidad) */
+    /* Overlay nítido, bien encuadrado en PC y móviles (sin perder calidad) */
     body::before{
       content:"";
       position:fixed;
       inset:0;
       background-image: var(--overlay-img);
+      background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      opacity: .22;
-      filter: saturate(1.08) contrast(1.06);
+      opacity: .40;              /* MÁS presencia -> menos “opaco” */
+      filter: saturate(1.15) contrast(1.12);
       pointer-events:none;
-      z-index:-1;
+      z-index:-2;
       transform: translateZ(0);
     }
+    /* Capa de luz suave para que todo se lea y NO se vea apagado */
     body::after{
       content:"";
       position:fixed;
       inset:0;
       background:
-        radial-gradient(900px 600px at 20% 10%, rgba(155,123,255,.18), transparent 60%),
-        radial-gradient(900px 600px at 85% 30%, rgba(255,91,214,.14), transparent 65%),
-        radial-gradient(900px 700px at 45% 120%, rgba(49,208,170,.10), transparent 60%);
-      opacity:.9;
+        radial-gradient(1000px 700px at 18% 14%, rgba(155,123,255,.22), transparent 62%),
+        radial-gradient(900px 680px at 85% 26%, rgba(255,91,214,.18), transparent 65%),
+        radial-gradient(900px 760px at 50% 118%, rgba(49,208,170,.12), transparent 65%),
+        linear-gradient(180deg, rgba(7,7,18,.20), rgba(7,7,18,.35));
       pointer-events:none;
       z-index:-1;
     }
 
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding: 20px 16px 80px;}
+
     .topbar{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(7,7,18,.72), rgba(7,7,18,.35));
+      background: linear-gradient(to bottom, rgba(7,7,18,.58), rgba(7,7,18,.22));
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
     .topbar .inner{
       max-width:var(--max); margin:0 auto; padding: 14px 16px;
       display:flex; align-items:center; justify-content:space-between; gap:14px;
     }
+
     .brand{display:flex; align-items:center; gap:10px; min-width: 240px;}
-    .sigil{
-      width:38px; height:38px; border-radius: 14px;
-      background:
-        radial-gradient(14px 14px at 30% 25%, rgba(255,255,255,.65), transparent 60%),
-        linear-gradient(135deg, rgba(155,123,255,.95), rgba(255,91,214,.85));
-      box-shadow: 0 12px 36px rgba(155,123,255,.18);
+
+    /* LOGO en header usando tu imagen */
+    .logoImg{
+      width:44px;
+      height:44px;
+      border-radius: 16px;
       border: 1px solid rgba(255,255,255,.18);
-      position:relative;
+      background: rgba(7,7,18,.22);
+      box-shadow: 0 12px 36px rgba(155,123,255,.18);
+      object-fit: cover;
+      object-position: center;
+      display:block;
     }
-    .sigil:after{
-      content:"";
-      position:absolute; inset:9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.45);
-      opacity:.75;
-    }
-    .brand h1{
-      margin:0; font-size: 14px; line-height:1.1; letter-spacing:.2px;
-    }
+
+    .brand h1{margin:0; font-size: 14px; line-height:1.1; letter-spacing:.2px;}
     .brand p{margin:2px 0 0; font-size:12px; color:var(--muted2)}
+
     nav{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
     .chip{
       padding: 9px 12px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
+      background: rgba(255,255,255,.06);
+      color: rgba(244,243,255,.78);
       font-size: 12px;
       transition: transform .18s ease, background .18s ease, border-color .18s ease;
       cursor:pointer;
       user-select:none;
       display:inline-flex; align-items:center; gap:8px;
     }
-    .chip:hover{transform: translateY(-1px); background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.18)}
+    .chip:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.20)}
     .chip.primary{
-      background: linear-gradient(135deg, rgba(155,123,255,.35), rgba(255,91,214,.25));
-      border-color: rgba(255,255,255,.18);
+      background: linear-gradient(135deg, rgba(155,123,255,.42), rgba(255,91,214,.30));
+      border-color: rgba(255,255,255,.20);
       color: var(--txt);
-      box-shadow: 0 16px 48px rgba(0,0,0,.25);
+      box-shadow: 0 16px 48px rgba(0,0,0,.22);
     }
 
     .hero{padding: 36px 0 10px;}
@@ -147,9 +148,10 @@
       gap: 18px;
       align-items: stretch;
     }
+
     .panel{
       border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04));
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
@@ -159,12 +161,13 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(700px 260px at 12% 0%, rgba(155,123,255,.24), transparent 70%),
-        radial-gradient(600px 240px at 90% 18%, rgba(255,91,214,.18), transparent 70%),
-        radial-gradient(500px 240px at 70% 105%, rgba(49,208,170,.10), transparent 75%);
+        radial-gradient(700px 260px at 12% 0%, rgba(155,123,255,.26), transparent 70%),
+        radial-gradient(600px 240px at 90% 18%, rgba(255,91,214,.20), transparent 70%),
+        radial-gradient(500px 240px at 70% 105%, rgba(49,208,170,.12), transparent 75%);
       pointer-events:none;
-      opacity:.9;
+      opacity:1;
     }
+
     .heroMain{
       padding: 24px 22px;
       min-height: 340px;
@@ -176,7 +179,6 @@
       z-index:1;
     }
 
-    /* Hero image grande */
     .heroArt{
       display:flex;
       justify-content:center;
@@ -185,71 +187,75 @@
       margin-bottom: 14px;
     }
     .heroArt img{
-      width: min(560px, 100%);
+      width: min(600px, 100%);
       height:auto;
       display:block;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(7,7,18,.25);
-      box-shadow: 0 24px 70px rgba(0,0,0,.55);
-      filter: drop-shadow(0 12px 35px rgba(155,123,255,.16));
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(7,7,18,.18);
+      box-shadow: 0 26px 78px rgba(0,0,0,.52);
+      filter: drop-shadow(0 14px 40px rgba(155,123,255,.20));
     }
 
     .kicker{
       display:inline-flex; align-items:center; gap:10px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
       width: fit-content;
-      color: var(--muted);
+      color: rgba(244,243,255,.80);
       font-size: 12px;
     }
     .dot{
       width:8px; height:8px; border-radius:999px;
       background: linear-gradient(135deg, var(--a), var(--c));
-      box-shadow: 0 0 0 4px rgba(155,123,255,.15);
+      box-shadow: 0 0 0 4px rgba(155,123,255,.18);
     }
     .title{
       margin: 8px 0 0;
       font-size: clamp(28px, 4vw, 46px);
       letter-spacing: -0.6px;
       line-height: 1.04;
+      text-shadow: 0 10px 28px rgba(0,0,0,.45);
     }
     .subtitle{
       margin: 10px 0 0;
-      color: var(--muted);
+      color: rgba(244,243,255,.78);
       font-size: 15px;
       line-height: 1.55;
       max-width: 62ch;
+      text-shadow: 0 10px 26px rgba(0,0,0,.35);
     }
+
     .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px}
     .btn{
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.07);
       color: var(--txt);
       padding: 12px 14px;
       border-radius: 14px;
       display:inline-flex; align-items:center; gap:10px;
-      font-weight: 600;
+      font-weight: 650;
       font-size: 14px;
       transition: transform .18s ease, background .18s ease, border-color .18s ease;
       cursor:pointer;
       user-select:none;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.2)}
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22)}
     .btn.whats{
-      background: linear-gradient(135deg, rgba(49,208,170,.22), rgba(155,123,255,.16));
-      border-color: rgba(49,208,170,.25);
+      background: linear-gradient(135deg, rgba(49,208,170,.26), rgba(155,123,255,.18));
+      border-color: rgba(49,208,170,.28);
     }
     .btn.ig{
-      background: linear-gradient(135deg, rgba(255,91,214,.22), rgba(155,123,255,.18));
-      border-color: rgba(255,91,214,.22);
+      background: linear-gradient(135deg, rgba(255,91,214,.26), rgba(155,123,255,.20));
+      border-color: rgba(255,91,214,.26);
     }
+
     .metaRow{
       display:flex; gap:10px; flex-wrap:wrap;
       margin-top: 10px;
-      color: var(--muted2);
+      color: rgba(244,243,255,.62);
       font-size: 12px;
     }
     .pill{
@@ -257,7 +263,7 @@
       padding: 8px 10px;
       border: 1px solid rgba(255,255,255,.10);
       border-radius: 999px;
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
     }
     .icon{width: 16px; height: 16px; display:inline-block;}
 
@@ -273,31 +279,25 @@
     .card{
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
+      background: rgba(255,255,255,.06);
       padding: 14px;
     }
     .card h3{margin:0; font-size: 14px}
-    .card p{margin:8px 0 0; color: var(--muted); font-size: 13px; line-height:1.5}
+    .card p{margin:8px 0 0; color: rgba(244,243,255,.74); font-size: 13px; line-height:1.5}
     .mini{display:grid; grid-template-columns: 1fr; gap:10px;}
-    .list{
-      margin: 10px 0 0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap: 10px;
-    }
+    .list{margin: 10px 0 0; padding:0; list-style:none; display:grid; gap: 10px;}
     .li{
       display:flex; gap:10px; align-items:flex-start;
       padding: 12px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
     }
     .check{
       width: 18px; height: 18px; flex:0 0 18px;
       border-radius: 7px;
-      background: linear-gradient(135deg, rgba(49,208,170,.9), rgba(155,123,255,.7));
-      box-shadow: 0 10px 30px rgba(49,208,170,.12);
+      background: linear-gradient(135deg, rgba(49,208,170,.95), rgba(155,123,255,.78));
+      box-shadow: 0 10px 30px rgba(49,208,170,.14);
       position:relative;
       margin-top:2px;
     }
@@ -305,12 +305,12 @@
       content:"";
       position:absolute; left:5px; top:4px;
       width:7px; height:4px;
-      border-left: 2px solid rgba(255,255,255,.9);
-      border-bottom: 2px solid rgba(255,255,255,.9);
+      border-left: 2px solid rgba(255,255,255,.92);
+      border-bottom: 2px solid rgba(255,255,255,.92);
       transform: rotate(-45deg);
     }
     .li strong{display:block; font-size: 13px}
-    .li span{display:block; margin-top:3px; color: var(--muted2); font-size: 12px; line-height:1.45}
+    .li span{display:block; margin-top:3px; color: rgba(244,243,255,.62); font-size: 12px; line-height:1.45}
 
     section{scroll-margin-top: 84px}
     .section{
@@ -318,44 +318,35 @@
       padding: 18px;
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.04);
       position:relative;
       overflow:hidden;
     }
     .section h2{margin:0; font-size: 18px; letter-spacing: -0.2px;}
     .section p.lead{
       margin: 8px 0 0;
-      color: var(--muted);
+      color: rgba(244,243,255,.76);
       font-size: 14px;
       line-height: 1.6;
       max-width: 78ch;
     }
-    .cols{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-    }
+
+    .cols{margin-top: 14px; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px;}
     .feature{
       padding: 14px;
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
       min-height: 120px;
     }
     .feature h3{margin:0; font-size: 14px}
-    .feature p{margin:8px 0 0; color: var(--muted); font-size: 13px; line-height:1.5}
+    .feature p{margin:8px 0 0; color: rgba(244,243,255,.74); font-size: 13px; line-height:1.5}
 
-    .steps{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-    }
+    .steps{margin-top: 14px; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px;}
     .step{
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
       padding: 14px;
       position:relative;
       overflow:hidden;
@@ -364,83 +355,68 @@
       font-weight: 800;
       font-size: 12px;
       letter-spacing: .8px;
-      color: rgba(244,243,255,.7);
+      color: rgba(244,243,255,.74);
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding: 7px 10px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
+      background: rgba(255,255,255,.06);
     }
     .step h3{margin:10px 0 0; font-size: 14px}
-    .step p{margin:8px 0 0; color: var(--muted); font-size: 13px; line-height:1.55}
+    .step p{margin:8px 0 0; color: rgba(244,243,255,.74); font-size: 13px; line-height:1.55}
 
-    .testis{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-    }
+    .testis{margin-top: 14px; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px;}
     .quote{
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
       padding: 14px;
     }
-    .quote p{margin:0; color: var(--muted); font-size: 13px; line-height:1.55}
-    .quote .who{margin-top: 10px; font-size: 12px; color: rgba(244,243,255,.78)}
+    .quote p{margin:0; color: rgba(244,243,255,.74); font-size: 13px; line-height:1.55}
+    .quote .who{margin-top: 10px; font-size: 12px; color: rgba(244,243,255,.62)}
 
-    .faq{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
+    .faq{margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
     details{
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
       padding: 12px 14px;
     }
     summary{
       cursor:pointer;
       font-weight: 700;
       font-size: 13px;
-      color: rgba(244,243,255,.9);
+      color: rgba(244,243,255,.92);
       list-style:none;
       display:flex; align-items:center; justify-content:space-between; gap: 10px;
     }
     summary::-webkit-details-marker{display:none}
-    details p{margin:10px 0 0; color: var(--muted); font-size: 13px; line-height: 1.55}
+    details p{margin:10px 0 0; color: rgba(244,243,255,.74); font-size: 13px; line-height: 1.55}
 
-    .contactGrid{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 12px;
-    }
+    .contactGrid{margin-top: 14px; display:grid; grid-template-columns: 1.2fr .8fr; gap: 12px;}
     .contactCard{
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
+      background: rgba(255,255,255,.05);
       padding: 14px;
     }
     .field{display:flex; flex-direction:column; gap:6px; margin-top: 10px;}
-    label{font-size:12px; color: var(--muted2)}
+    label{font-size:12px; color: rgba(244,243,255,.62)}
     input, textarea{
       width:100%;
       padding: 12px 12px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.12);
-      background: rgba(7,7,18,.35);
+      background: rgba(7,7,18,.22);
       color: var(--txt);
       outline:none;
       font-size: 14px;
     }
     textarea{min-height: 110px; resize: vertical}
     .sendRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px}
-    .hint{margin-top: 10px; font-size: 12px; color: var(--muted2); line-height:1.5}
+    .hint{margin-top: 10px; font-size: 12px; color: rgba(244,243,255,.60); line-height:1.5}
 
     .fab{
       position:fixed;
@@ -453,26 +429,26 @@
       width: 52px; height: 52px;
       border-radius: 18px;
       display:grid; place-items:center;
-      border: 1px solid rgba(255,255,255,.16);
-      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.18);
+      box-shadow: 0 18px 50px rgba(0,0,0,.42);
       backdrop-filter: blur(10px);
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.07);
       transform: translateZ(0);
       transition: transform .18s ease;
     }
     .fab a:hover{transform: translateY(-2px)}
-    .fab .w{background: linear-gradient(135deg, rgba(49,208,170,.22), rgba(7,7,18,.35)); border-color: rgba(49,208,170,.25)}
-    .fab .i{background: linear-gradient(135deg, rgba(255,91,214,.22), rgba(7,7,18,.35)); border-color: rgba(255,91,214,.22)}
+    .fab .w{background: linear-gradient(135deg, rgba(49,208,170,.30), rgba(7,7,18,.18)); border-color: rgba(49,208,170,.30)}
+    .fab .i{background: linear-gradient(135deg, rgba(255,91,214,.30), rgba(7,7,18,.18)); border-color: rgba(255,91,214,.30)}
     .fab svg{width:22px; height:22px}
 
     footer{
       margin-top: 22px;
       padding: 18px 0 0;
-      color: rgba(244,243,255,.55);
+      color: rgba(244,243,255,.58);
       font-size: 12px;
       text-align:center;
     }
-    footer a{color: rgba(244,243,255,.78); text-decoration: underline; text-decoration-color: rgba(244,243,255,.25)}
+    footer a{color: rgba(244,243,255,.82); text-decoration: underline; text-decoration-color: rgba(244,243,255,.25)}
     footer a:hover{text-decoration-color: rgba(244,243,255,.6)}
 
     @media (max-width: 920px){
@@ -485,7 +461,12 @@
       .contactGrid{grid-template-columns: 1fr}
       nav{display:none}
       .brand{min-width: unset}
-      .heroArt img{border-radius: 16px}
+      .heroArt img{border-radius: 16px; width: min(640px, 100%);}
+      body::before{
+        opacity: .42;
+        background-position: center top; /* encuadre más estable en móviles */
+      }
+      .logoImg{width:40px; height:40px; border-radius: 14px;}
     }
   </style>
 </head>
@@ -494,7 +475,7 @@
   <header class="topbar">
     <div class="inner">
       <div class="brand">
-        <div class="sigil" aria-hidden="true"></div>
+        <img class="logoImg" src="https://iili.io/fDm5Uhv.md.png" alt="Logo" loading="eager" decoding="async" />
         <div>
           <h1>María Julia Ugarte Malnis</h1>
           <p>Registros Akáshicos • Tarot • Sesiones</p>
@@ -521,7 +502,6 @@
             <div>
               <div class="kicker"><span class="dot"></span> Acompañamiento personalizado • sesiones por turno</div>
 
-              <!-- HERO GRANDE -->
               <div class="heroArt">
                 <img src="https://iili.io/fDm5Uhv.md.png" alt="Imagen principal" loading="eager" decoding="async" />
               </div>
@@ -746,7 +726,7 @@
 
         <div class="contactCard">
           <h3 style="margin:0; font-size:14px;">Links directos</h3>
-          <p style="margin:8px 0 0; color: var(--muted); font-size:13px; line-height:1.55;">
+          <p style="margin:8px 0 0; color: rgba(244,243,255,.74); font-size:13px; line-height:1.55;">
             Si preferís, tocá directo:
           </p>
 
@@ -782,25 +762,13 @@
   </div>
 
   <script>
-    // === CONFIGURACIÓN RÁPIDA ===
-    // 1) Poné tu número WhatsApp en formato internacional (sin +, sin espacios). Ej: 5491131234567
     const WHATSAPP_NUMBER = "5491112345678";
-
-    // 2) Poné tu usuario de Instagram (sin @)
     const INSTAGRAM_USER = "juliamper8";
-
-    // 3) Texto base para el primer mensaje
     const BASE_MSG = "Hola Julia! 🙌 Quiero reservar una sesión. Te cuento brevemente:";
 
     function enc(v){ return encodeURIComponent(v || ""); }
-
-    function whatsappLink(text){
-      return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + enc(text);
-    }
-
-    function instagramLink(){
-      return "https://instagram.com/" + INSTAGRAM_USER;
-    }
+    function whatsappLink(text){ return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + enc(text); }
+    function instagramLink(){ return "https://instagram.com/" + INSTAGRAM_USER; }
 
     function buildMsg(){
       const nombre = document.getElementById("nombre").value.trim();
@@ -826,7 +794,6 @@
       e.preventDefault();
       window.open(whatsappLink(buildMsg()), "_blank");
     });
-
     document.getElementById("sendIg").addEventListener("click", function(e){
       e.preventDefault();
       window.open(ig, "_blank");
@@ -845,4 +812,3 @@
   </script>
 </body>
 </html>
-```
