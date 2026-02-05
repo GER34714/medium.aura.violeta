@@ -12,15 +12,14 @@
   <meta property="og:title" content="María Julia Ugarte Malnis | Registros Akáshicos • Tarot" />
   <meta property="og:description" content="Sesiones de Registros Akáshicos y Tarot. Acompañamiento personalizado. Reservá tu turno." />
   <meta property="og:type" content="website" />
-  <!-- Reemplazá por una imagen tuya (cuadrada ideal) -->
-  <meta property="og:image" content="https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:image" content="https://iili.io/fDm5Uhv.md.png" />
   <meta property="og:locale" content="es_AR" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="María Julia Ugarte Malnis | Registros Akáshicos • Tarot" />
   <meta name="twitter:description" content="Sesiones de Registros Akáshicos y Tarot. Acompañamiento personalizado. Reservá tu turno." />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1528712306091-ed0763094c98?auto=format&fit=crop&w=1200&q=80" />
+  <meta name="twitter:image" content="https://iili.io/fDm5Uhv.md.png" />
 
   <meta name="theme-color" content="#6b4cff" />
 
@@ -40,19 +39,53 @@
       --shadow: 0 18px 60px rgba(0,0,0,.45);
       --radius: 18px;
       --max: 1120px;
+
+      --hero-img: url("https://iili.io/fDm5Uhv.md.png");
+      --overlay-img: url("https://iili.io/fDmrgEv.md.png");
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      background: radial-gradient(1200px 700px at 12% 8%, rgba(155,123,255,.22), transparent 60%),
-                  radial-gradient(900px 700px at 90% 30%, rgba(255,91,214,.18), transparent 62%),
-                  radial-gradient(800px 700px at 50% 110%, rgba(49,208,170,.10), transparent 60%),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 700px at 12% 8%, rgba(155,123,255,.22), transparent 60%),
+        radial-gradient(900px 700px at 90% 30%, rgba(255,91,214,.18), transparent 62%),
+        radial-gradient(800px 700px at 50% 110%, rgba(49,208,170,.10), transparent 60%),
+        var(--bg);
       color: var(--txt);
       overflow-x:hidden;
+      position:relative;
     }
+
+    /* Overlay (sin franjas sólidas, con buena calidad) */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image: var(--overlay-img);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: .22;
+      filter: saturate(1.08) contrast(1.06);
+      pointer-events:none;
+      z-index:-1;
+      transform: translateZ(0);
+    }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(155,123,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 85% 30%, rgba(255,91,214,.14), transparent 65%),
+        radial-gradient(900px 700px at 45% 120%, rgba(49,208,170,.10), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+      z-index:-1;
+    }
+
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding: 20px 16px 80px;}
     .topbar{
@@ -107,9 +140,7 @@
       box-shadow: 0 16px 48px rgba(0,0,0,.25);
     }
 
-    .hero{
-      padding: 36px 0 10px;
-    }
+    .hero{padding: 36px 0 10px;}
     .grid{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
@@ -127,8 +158,10 @@
     .panel:before{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(600px 220px at 18% 0%, rgba(155,123,255,.26), transparent 70%),
-                  radial-gradient(500px 220px at 90% 18%, rgba(255,91,214,.18), transparent 70%);
+      background:
+        radial-gradient(700px 260px at 12% 0%, rgba(155,123,255,.24), transparent 70%),
+        radial-gradient(600px 240px at 90% 18%, rgba(255,91,214,.18), transparent 70%),
+        radial-gradient(500px 240px at 70% 105%, rgba(49,208,170,.10), transparent 75%);
       pointer-events:none;
       opacity:.9;
     }
@@ -142,6 +175,26 @@
       position:relative;
       z-index:1;
     }
+
+    /* Hero image grande */
+    .heroArt{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin-top: 6px;
+      margin-bottom: 14px;
+    }
+    .heroArt img{
+      width: min(560px, 100%);
+      height:auto;
+      display:block;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(7,7,18,.25);
+      box-shadow: 0 24px 70px rgba(0,0,0,.55);
+      filter: drop-shadow(0 12px 35px rgba(155,123,255,.16));
+    }
+
     .kicker{
       display:inline-flex; align-items:center; gap:10px;
       padding: 8px 12px;
@@ -206,9 +259,7 @@
       border-radius: 999px;
       background: rgba(255,255,255,.04);
     }
-    .icon{
-      width: 16px; height: 16px; display:inline-block;
-    }
+    .icon{width: 16px; height: 16px; display:inline-block;}
 
     .heroSide{
       padding: 18px;
@@ -227,11 +278,7 @@
     }
     .card h3{margin:0; font-size: 14px}
     .card p{margin:8px 0 0; color: var(--muted); font-size: 13px; line-height:1.5}
-    .mini{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-    }
+    .mini{display:grid; grid-template-columns: 1fr; gap:10px;}
     .list{
       margin: 10px 0 0;
       padding:0;
@@ -275,11 +322,7 @@
       position:relative;
       overflow:hidden;
     }
-    .section h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing: -0.2px;
-    }
+    .section h2{margin:0; font-size: 18px; letter-spacing: -0.2px;}
     .section p.lead{
       margin: 8px 0 0;
       color: var(--muted);
@@ -383,9 +426,7 @@
       background: rgba(255,255,255,.04);
       padding: 14px;
     }
-    .field{
-      display:flex; flex-direction:column; gap:6px; margin-top: 10px;
-    }
+    .field{display:flex; flex-direction:column; gap:6px; margin-top: 10px;}
     label{font-size:12px; color: var(--muted2)}
     input, textarea{
       width:100%;
@@ -444,6 +485,7 @@
       .contactGrid{grid-template-columns: 1fr}
       nav{display:none}
       .brand{min-width: unset}
+      .heroArt img{border-radius: 16px}
     }
   </style>
 </head>
@@ -467,9 +509,7 @@
         <a class="chip primary" href="#contacto">Reservar turno</a>
       </nav>
 
-      <a class="chip primary" href="#contacto" aria-label="Reservar turno">
-        Reservar turno
-      </a>
+      <a class="chip primary" href="#contacto" aria-label="Reservar turno">Reservar turno</a>
     </div>
   </header>
 
@@ -480,6 +520,12 @@
           <div class="heroMain">
             <div>
               <div class="kicker"><span class="dot"></span> Acompañamiento personalizado • sesiones por turno</div>
+
+              <!-- HERO GRANDE -->
+              <div class="heroArt">
+                <img src="https://iili.io/fDm5Uhv.md.png" alt="Imagen principal" loading="eager" decoding="async" />
+              </div>
+
               <h2 class="title">Un espacio para ordenar, comprender y avanzar.</h2>
               <p class="subtitle">
                 Sesiones de <b>Registros Akáshicos</b> y <b>Tarot</b> con un enfoque claro y respetuoso.
@@ -487,7 +533,6 @@
               </p>
 
               <div class="ctaRow">
-                <!-- Reemplazá el número por el tuyo (formato internacional) -->
                 <a class="btn whats" id="ctaWhats" href="#" rel="noopener">
                   <span class="icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none">
@@ -530,7 +575,7 @@
             </div>
 
             <div class="hint">
-              <b>Nota:</b> este es un template listo para adaptar. Cambiá textos, links, imagen OG y tu número/usuario.
+              <b>Nota:</b> este es un template listo para adaptar. Cambiá textos, links, y tu número/usuario.
             </div>
           </div>
         </div>
@@ -723,7 +768,6 @@
     </footer>
   </main>
 
-  <!-- Floating buttons -->
   <div class="fab" aria-label="Accesos rápidos">
     <a class="w" id="fabWhats" href="#" rel="noopener" aria-label="WhatsApp">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -755,8 +799,6 @@
     }
 
     function instagramLink(){
-      // OJO: Instagram no tiene un link universal 100% confiable para abrir DM en todos los dispositivos.
-      // Este abre el perfil, desde ahí le escriben.
       return "https://instagram.com/" + INSTAGRAM_USER;
     }
 
@@ -770,7 +812,6 @@
       return msg;
     }
 
-    // Set direct links
     const directWhats = whatsappLink(BASE_MSG + "\n\n¿Tenés disponibilidad esta semana?");
     document.getElementById("ctaWhats").href = directWhats;
     document.getElementById("directWhats").href = directWhats;
@@ -781,7 +822,6 @@
     document.getElementById("directIg").href = ig;
     document.getElementById("fabIg").href = ig;
 
-    // Form actions
     document.getElementById("sendWhats").addEventListener("click", function(e){
       e.preventDefault();
       window.open(whatsappLink(buildMsg()), "_blank");
@@ -792,7 +832,6 @@
       window.open(ig, "_blank");
     });
 
-    // Smooth anchors
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener("click", (e)=>{
         const id = a.getAttribute("href");
