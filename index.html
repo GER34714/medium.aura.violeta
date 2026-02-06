@@ -38,14 +38,14 @@
       --radius: 18px;
       --max: 1120px;
 
-      /* HERO + OVERLAY */
       --overlay-img: url("https://iili.io/fb6dwQ4.md.jpg");
       --hero-img: url("https://iili.io/fb6EjCG.md.png");
 
-      --panel-bg: rgba(10,10,22,.56);
+      /* CAMBIO: tarjetas más claritas (más transparencia para ver overlay) */
+      --panel-bg: rgba(255,255,255,.085);
       --panel-bg-2: rgba(255,255,255,.06);
-      --panel-border: rgba(255,255,255,.18);
-      --panel-inner: rgba(255,255,255,.10);
+      --panel-border: rgba(255,255,255,.22);
+      --panel-inner: rgba(255,255,255,.16);
     }
 
     *{box-sizing:border-box}
@@ -64,7 +64,6 @@
       position:relative;
     }
 
-    /* CAMBIO: overlay más clarito + en mobile se ve completa (contain) */
     body::before{
       content:"";
       position:fixed;
@@ -73,7 +72,7 @@
       background-repeat:no-repeat;
       background-size:cover;
       background-position:center;
-      opacity:.30;                 /* + visible (más clarito) */
+      opacity:.30;
       filter:saturate(1.10) contrast(1.06);
       pointer-events:none;
       z-index:-2;
@@ -87,7 +86,7 @@
         radial-gradient(1000px 700px at 18% 14%, rgba(155,123,255,.22), transparent 62%),
         radial-gradient(900px 680px at 85% 26%, rgba(255,91,214,.18), transparent 65%),
         radial-gradient(900px 760px at 50% 118%, rgba(49,208,170,.12), transparent 65%),
-        linear-gradient(180deg, rgba(7,7,18,.22), rgba(7,7,18,.44));
+        linear-gradient(180deg, rgba(7,7,18,.18), rgba(7,7,18,.42));
       pointer-events:none;
       z-index:-1;
     }
@@ -149,6 +148,7 @@
     }
     aside.panel{align-self:start;}
 
+    /* CAMBIO: cards/paneles más claritos */
     .panel,
     .section,
     .card,
@@ -157,14 +157,14 @@
     .quote,
     details,
     .contactCard{
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: linear-gradient(180deg, rgba(10,10,22,.56), rgba(10,10,22,.44));
+      border-radius: var(--radius);
+      border: 1px solid var(--panel-border);
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
       box-shadow:
-        0 18px 60px rgba(0,0,0,.48),
-        inset 0 1px 0 rgba(255,255,255,.10);
-      backdrop-filter: blur(10px) saturate(1.15);
-      -webkit-backdrop-filter: blur(10px) saturate(1.15);
+        var(--shadow),
+        inset 0 1px 0 var(--panel-inner);
+      backdrop-filter: blur(12px) saturate(1.12);
+      -webkit-backdrop-filter: blur(12px) saturate(1.12);
     }
 
     .panel{overflow:hidden; position:relative}
@@ -172,11 +172,11 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(700px 260px at 12% 0%, rgba(155,123,255,.22), transparent 70%),
-        radial-gradient(600px 240px at 90% 18%, rgba(255,91,214,.18), transparent 70%),
-        radial-gradient(500px 240px at 70% 105%, rgba(49,208,170,.10), transparent 75%);
+        radial-gradient(700px 260px at 12% 0%, rgba(155,123,255,.20), transparent 70%),
+        radial-gradient(600px 240px at 90% 18%, rgba(255,91,214,.16), transparent 70%),
+        radial-gradient(500px 240px at 70% 105%, rgba(49,208,170,.09), transparent 75%);
       pointer-events:none;
-      opacity:1;
+      opacity:.9;
     }
 
     .heroMain{
@@ -202,20 +202,20 @@
       height:auto;
       display:block;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.16);
-      background: rgba(7,7,18,.16);
-      box-shadow: 0 26px 78px rgba(0,0,0,.52);
-      filter: drop-shadow(0 14px 40px rgba(155,123,255,.22));
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(7,7,18,.10);
+      box-shadow: 0 26px 78px rgba(0,0,0,.48);
+      filter: drop-shadow(0 14px 40px rgba(155,123,255,.18));
     }
 
     .kicker{
       display:inline-flex; align-items:center; gap:10px;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,.09);
-      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.11);
+      border: 1px solid rgba(255,255,255,.18);
       width: fit-content;
-      color: rgba(244,243,255,.88);
+      color: rgba(244,243,255,.92);
       font-size: 12px;
     }
     .dot{
@@ -233,17 +233,17 @@
     }
     .subtitle{
       margin: 10px 0 0;
-      color: rgba(244,243,255,.78);
+      color: var(--muted);
       font-size: 15px;
       line-height: 1.55;
       max-width: 62ch;
-      text-shadow: 0 10px 26px rgba(0,0,0,.32);
+      text-shadow: 0 10px 26px rgba(0,0,0,.28);
     }
 
     .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px}
     .btn{
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.12);
       color: var(--txt);
       padding: 12px 14px;
       border-radius: 14px;
@@ -254,28 +254,28 @@
       cursor:pointer;
       user-select:none;
     }
-    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.24)}
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.26)}
     .btn.whats{
-      background: linear-gradient(135deg, rgba(49,208,170,.30), rgba(155,123,255,.22));
-      border-color: rgba(49,208,170,.32);
+      background: linear-gradient(135deg, rgba(49,208,170,.26), rgba(155,123,255,.18));
+      border-color: rgba(49,208,170,.28);
     }
     .btn.ig{
-      background: linear-gradient(135deg, rgba(255,91,214,.30), rgba(155,123,255,.22));
-      border-color: rgba(255,91,214,.30);
+      background: linear-gradient(135deg, rgba(255,91,214,.26), rgba(155,123,255,.18));
+      border-color: rgba(255,91,214,.26);
     }
 
     .metaRow{
       display:flex; gap:10px; flex-wrap:wrap;
       margin-top: 10px;
-      color: rgba(244,243,255,.66);
+      color: rgba(244,243,255,.70);
       font-size: 12px;
     }
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding: 8px 10px;
-      border: 1px solid rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
       border-radius: 999px;
-      background: rgba(255,255,255,.07);
+      background: rgba(255,255,255,.08);
     }
     .icon{width: 16px; height: 16px; display:inline-block;}
 
@@ -291,7 +291,7 @@
 
     .card{padding: 14px}
     .card h3{margin:0; font-size: 14px}
-    .card p{margin:8px 0 0; color: rgba(244,243,255,.78); font-size: 13px; line-height:1.5}
+    .card p{margin:8px 0 0; color: rgba(244,243,255,.82); font-size: 13px; line-height:1.5}
     .mini{display:grid; grid-template-columns: 1fr; gap:10px;}
 
     .list{margin: 10px 0 0; padding:0; list-style:none; display:grid; gap: 10px;}
@@ -299,14 +299,14 @@
       display:flex; gap:10px; align-items:flex-start;
       padding: 12px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
     }
     .check{
       width: 18px; height: 18px; flex:0 0 18px;
       border-radius: 7px;
-      background: linear-gradient(135deg, rgba(49,208,170,.95), rgba(155,123,255,.78));
-      box-shadow: 0 10px 30px rgba(49,208,170,.14);
+      background: linear-gradient(135deg, rgba(49,208,170,.92), rgba(155,123,255,.72));
+      box-shadow: 0 10px 30px rgba(49,208,170,.12);
       position:relative;
       margin-top:2px;
     }
@@ -319,7 +319,7 @@
       transform: rotate(-45deg);
     }
     .li strong{display:block; font-size: 13px}
-    .li span{display:block; margin-top:3px; color: rgba(244,243,255,.64); font-size: 12px; line-height:1.45}
+    .li span{display:block; margin-top:3px; color: rgba(244,243,255,.70); font-size: 12px; line-height:1.45}
 
     section{scroll-margin-top: 84px}
     .section{
@@ -331,17 +331,17 @@
     .section h2{margin:0; font-size: 18px; letter-spacing: -0.2px;}
     .section p.lead{
       margin: 8px 0 0;
-      color: rgba(244,243,255,.80);
+      color: rgba(244,243,255,.84);
       font-size: 14px;
       line-height: 1.6;
       max-width: 78ch;
-      text-shadow: 0 10px 24px rgba(0,0,0,.25);
+      text-shadow: 0 10px 24px rgba(0,0,0,.22);
     }
 
     .cols{margin-top: 14px; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px;}
     .feature{padding: 14px; min-height: 120px;}
     .feature h3{margin:0; font-size: 14px}
-    .feature p{margin:8px 0 0; color: rgba(244,243,255,.78); font-size: 13px; line-height:1.5}
+    .feature p{margin:8px 0 0; color: rgba(244,243,255,.82); font-size: 13px; line-height:1.5}
 
     .steps{margin-top: 14px; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px;}
     .step{padding: 14px; position:relative; overflow:hidden;}
@@ -349,22 +349,22 @@
       font-weight: 800;
       font-size: 12px;
       letter-spacing: .8px;
-      color: rgba(244,243,255,.78);
+      color: rgba(244,243,255,.82);
       display:inline-flex;
       align-items:center;
       gap:8px;
       padding: 7px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.10);
     }
     .step h3{margin:10px 0 0; font-size: 14px}
-    .step p{margin:8px 0 0; color: rgba(244,243,255,.78); font-size: 13px; line-height:1.55}
+    .step p{margin:8px 0 0; color: rgba(244,243,255,.82); font-size: 13px; line-height:1.55}
 
     .testis{margin-top: 14px; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px;}
     .quote{padding: 14px;}
-    .quote p{margin:0; color: rgba(244,243,255,.78); font-size: 13px; line-height:1.55}
-    .quote .who{margin-top: 10px; font-size: 12px; color: rgba(244,243,255,.64)}
+    .quote p{margin:0; color: rgba(244,243,255,.82); font-size: 13px; line-height:1.55}
+    .quote .who{margin-top: 10px; font-size: 12px; color: rgba(244,243,255,.70)}
 
     .faq{margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
     details{padding: 12px 14px;}
@@ -372,30 +372,30 @@
       cursor:pointer;
       font-weight: 700;
       font-size: 13px;
-      color: rgba(244,243,255,.94);
+      color: rgba(244,243,255,.96);
       list-style:none;
       display:flex; align-items:center; justify-content:space-between; gap: 10px;
     }
     summary::-webkit-details-marker{display:none}
-    details p{margin:10px 0 0; color: rgba(244,243,255,.78); font-size: 13px; line-height: 1.55}
+    details p{margin:10px 0 0; color: rgba(244,243,255,.82); font-size: 13px; line-height: 1.55}
 
     .contactGrid{margin-top: 14px; display:grid; grid-template-columns: 1.2fr .8fr; gap: 12px;}
     .contactCard{padding: 14px;}
     .field{display:flex; flex-direction:column; gap:6px; margin-top: 10px;}
-    label{font-size:12px; color: rgba(244,243,255,.70)}
+    label{font-size:12px; color: rgba(244,243,255,.76)}
     input, textarea{
       width:100%;
       padding: 12px 12px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(7,7,18,.22);
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
       color: var(--txt);
       outline:none;
       font-size: 14px;
     }
     textarea{min-height: 110px; resize: vertical}
     .sendRow{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px}
-    .hint{margin-top: 10px; font-size: 12px; color: rgba(244,243,255,.64); line-height:1.5}
+    .hint{margin-top: 10px; font-size: 12px; color: rgba(244,243,255,.70); line-height:1.5}
 
     .fab{
       position:fixed;
@@ -408,26 +408,26 @@
       width: 52px; height: 52px;
       border-radius: 18px;
       display:grid; place-items:center;
-      border: 1px solid rgba(255,255,255,.20);
+      border: 1px solid rgba(255,255,255,.22);
       box-shadow: 0 18px 50px rgba(0,0,0,.42);
       backdrop-filter: blur(10px);
-      background: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.12);
       transform: translateZ(0);
       transition: transform .18s ease;
     }
     .fab a:hover{transform: translateY(-2px)}
-    .fab .w{background: linear-gradient(135deg, rgba(49,208,170,.32), rgba(7,7,18,.18)); border-color: rgba(49,208,170,.34)}
-    .fab .i{background: linear-gradient(135deg, rgba(255,91,214,.32), rgba(7,7,18,.18)); border-color: rgba(255,91,214,.32)}
+    .fab .w{background: linear-gradient(135deg, rgba(49,208,170,.26), rgba(255,255,255,.06)); border-color: rgba(49,208,170,.28)}
+    .fab .i{background: linear-gradient(135deg, rgba(255,91,214,.26), rgba(255,255,255,.06)); border-color: rgba(255,91,214,.26)}
     .fab svg{width:22px; height:22px}
 
     footer{
       margin-top: 22px;
       padding: 18px 0 0;
-      color: rgba(244,243,255,.60);
+      color: rgba(244,243,255,.66);
       font-size: 12px;
       text-align:center;
     }
-    footer a{color: rgba(244,243,255,.84); text-decoration: underline; text-decoration-color: rgba(244,243,255,.25)}
+    footer a{color: rgba(244,243,255,.88); text-decoration: underline; text-decoration-color: rgba(244,243,255,.25)}
     footer a:hover{text-decoration-color: rgba(244,243,255,.6)}
 
     @media (max-width: 920px){
@@ -440,10 +440,9 @@
       nav{display:none}
       .brand{min-width: unset}
       .heroArt img{border-radius: 16px; width: min(640px, 100%);}
-      /* CAMBIO: en móvil, overlay entero dentro de pantalla */
       body::before{
-        opacity:.32;              /* un toque más visible en móvil también */
-        background-size: contain; /* se ve completa */
+        opacity:.34;
+        background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
       }
@@ -494,8 +493,13 @@
               </p>
 
               <div class="ctaRow">
-                <a class="btn whats" id="ctaWhats" href="#" rel="noopener">Reservar por WhatsApp</a>
-                <a class="btn ig" id="ctaIg" href="#" rel="noopener">Consultar por Instagram</a>
+                <a class="btn whats" id="ctaWhats" href="#" rel="noopener">
+                  Reservar por WhatsApp
+                </a>
+
+                <a class="btn ig" id="ctaIg" href="#" rel="noopener">
+                  Consultar por Instagram
+                </a>
               </div>
 
               <div class="metaRow">
@@ -516,9 +520,27 @@
               <h3>¿Qué podés traer a la sesión?</h3>
               <p>Una situación puntual, una decisión, un bloqueo, un vínculo, o simplemente la necesidad de claridad.</p>
               <ul class="list">
-                <li class="li"><div class="check" aria-hidden="true"></div><div><strong>Preguntas claras</strong><span>Armamos juntas el foco para que la sesión sea útil y concreta.</span></div></li>
-                <li class="li"><div class="check" aria-hidden="true"></div><div><strong>Lectura ordenada</strong><span>Una devolución simple para que te quede todo claro y accionable.</span></div></li>
-                <li class="li"><div class="check" aria-hidden="true"></div><div><strong>Enfoque respetuoso</strong><span>Con cuidado y claridad, sin promesas vacías.</span></div></li>
+                <li class="li">
+                  <div class="check" aria-hidden="true"></div>
+                  <div>
+                    <strong>Preguntas claras</strong>
+                    <span>Armamos juntas el foco para que la sesión sea útil y concreta.</span>
+                  </div>
+                </li>
+                <li class="li">
+                  <div class="check" aria-hidden="true"></div>
+                  <div>
+                    <strong>Lectura ordenada</strong>
+                    <span>Una devolución simple para que te quede todo claro y accionable.</span>
+                  </div>
+                </li>
+                <li class="li">
+                  <div class="check" aria-hidden="true"></div>
+                  <div>
+                    <strong>Enfoque respetuoso</strong>
+                    <span>Con cuidado y claridad, sin promesas vacías.</span>
+                  </div>
+                </li>
               </ul>
             </div>
 
@@ -539,16 +561,30 @@
 
     <section class="section" id="servicios">
       <h2>Servicios</h2>
-      <p class="lead">Elegí el formato que más se ajuste a tu momento. Si no sabés cuál, me escribís y lo definimos en 2 mensajes.</p>
+      <p class="lead">
+        Elegí el formato que más se ajuste a tu momento. Si no sabés cuál, me escribís y lo definimos en 2 mensajes.
+      </p>
 
       <div class="cols">
-        <div class="feature"><h3>Mediumnidad</h3><p>Sesión enfocada en conectar información y mensajes para traer claridad sobre tu proceso y tu situación.</p></div>
-        <div class="feature"><h3>Tarot</h3><p>Lectura orientada a situación actual + opciones de acción. Ideal para decisiones y caminos posibles.</p></div>
-        <div class="feature"><h3>Péndulo</h3><p>Consulta puntual para orientar decisiones y destrabar dudas concretas con preguntas claras.</p></div>
+        <div class="feature">
+          <h3>Mediumnidad</h3>
+          <p>Sesión enfocada en conectar información y mensajes para traer claridad sobre tu proceso y tu situación.</p>
+        </div>
+        <div class="feature">
+          <h3>Tarot</h3>
+          <p>Lectura orientada a situación actual + opciones de acción. Ideal para decisiones y caminos posibles.</p>
+        </div>
+        <div class="feature">
+          <h3>Péndulo</h3>
+          <p>Consulta puntual para orientar decisiones y destrabar dudas concretas con preguntas claras.</p>
+        </div>
       </div>
 
       <div class="cols" style="margin-top:12px;">
-        <div class="feature" style="grid-column: 1 / -1;"><h3>Registros Akáshicos</h3><p>Sesión enfocada en comprensión profunda de procesos personales y dirección para dar próximos pasos.</p></div>
+        <div class="feature" style="grid-column: 1 / -1;">
+          <h3>Registros Akáshicos</h3>
+          <p>Sesión enfocada en comprensión profunda de procesos personales y dirección para dar próximos pasos.</p>
+        </div>
       </div>
     </section>
 
@@ -557,9 +593,21 @@
       <p class="lead">Simple y directo: coordinamos el turno, definimos el foco y hacemos la sesión.</p>
 
       <div class="steps">
-        <div class="step"><div class="num">01 • Consulta</div><h3>Me escribís</h3><p>Por WhatsApp o Instagram. Me contás brevemente qué te está pasando y qué querés trabajar.</p></div>
-        <div class="step"><div class="num">02 • Turno</div><h3>Coordinamos horario</h3><p>Te paso disponibilidad y elegimos el momento. (Modalidad online / por turno).</p></div>
-        <div class="step"><div class="num">03 • Sesión</div><h3>Trabajamos el foco</h3><p>La sesión se orienta a claridad y próximos pasos. Si querés, te dejo un resumen.</p></div>
+        <div class="step">
+          <div class="num">01 • Consulta</div>
+          <h3>Me escribís</h3>
+          <p>Por WhatsApp o Instagram. Me contás brevemente qué te está pasando y qué querés trabajar.</p>
+        </div>
+        <div class="step">
+          <div class="num">02 • Turno</div>
+          <h3>Coordinamos horario</h3>
+          <p>Te paso disponibilidad y elegimos el momento. (Modalidad online / por turno).</p>
+        </div>
+        <div class="step">
+          <div class="num">03 • Sesión</div>
+          <h3>Trabajamos el foco</h3>
+          <p>La sesión se orienta a claridad y próximos pasos. Si querés, te dejo un resumen.</p>
+        </div>
       </div>
     </section>
 
@@ -568,9 +616,18 @@
       <p class="lead">Reemplazá estos textos por capturas o testimonios reales (si tenés).</p>
 
       <div class="testis">
-        <div class="quote"><p>“Me ayudó a ordenar la cabeza y volver a lo importante. Me quedé con un plan simple para seguir.”</p><div class="who">— Consultante</div></div>
-        <div class="quote"><p>“Lo que más me gustó fue la claridad y el respeto. Sentí un espacio cuidado, sin vueltas.”</p><div class="who">— Consultante</div></div>
-        <div class="quote"><p>“Me sirvió para tomar una decisión que venía pateando. Me quedé mucho más tranquila.”</p><div class="who">— Consultante</div></div>
+        <div class="quote">
+          <p>“Me ayudó a ordenar la cabeza y volver a lo importante. Me quedé con un plan simple para seguir.”</p>
+          <div class="who">— Consultante</div>
+        </div>
+        <div class="quote">
+          <p>“Lo que más me gustó fue la claridad y el respeto. Sentí un espacio cuidado, sin vueltas.”</p>
+          <div class="who">— Consultante</div>
+        </div>
+        <div class="quote">
+          <p>“Me sirvió para tomar una decisión que venía pateando. Me quedé mucho más tranquila.”</p>
+          <div class="who">— Consultante</div>
+        </div>
       </div>
     </section>
 
@@ -579,16 +636,30 @@
       <p class="lead">Dejá todo claro acá para filtrar consultas repetidas y llegar directo al turno.</p>
 
       <div class="faq">
-        <details><summary>¿Cómo reservo? <span>+</span></summary><p>Me escribís por WhatsApp o Instagram, te paso disponibilidad y coordinamos el turno.</p></details>
-        <details><summary>¿Es presencial u online? <span>+</span></summary><p>Podemos coordinar online. Si trabajás presencial, reemplazá este texto por tu ubicación y horarios.</p></details>
-        <details><summary>¿Cuánto dura la sesión? <span>+</span></summary><p>Depende del servicio. Podés indicar duración aproximada o aclarar que se define al coordinar.</p></details>
-        <details><summary>¿Qué tengo que preparar? <span>+</span></summary><p>Solo un lugar tranquilo y una idea de lo que querés trabajar. Si estás confundida, lo ordenamos juntas.</p></details>
+        <details>
+          <summary>¿Cómo reservo? <span>+</span></summary>
+          <p>Me escribís por WhatsApp o Instagram, te paso disponibilidad y coordinamos el turno.</p>
+        </details>
+        <details>
+          <summary>¿Es presencial u online? <span>+</span></summary>
+          <p>Podemos coordinar online. Si trabajás presencial, reemplazá este texto por tu ubicación y horarios.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto dura la sesión? <span>+</span></summary>
+          <p>Depende del servicio. Podés indicar duración aproximada o aclarar que se define al coordinar.</p>
+        </details>
+        <details>
+          <summary>¿Qué tengo que preparar? <span>+</span></summary>
+          <p>Solo un lugar tranquilo y una idea de lo que querés trabajar. Si estás confundida, lo ordenamos juntas.</p>
+        </details>
       </div>
     </section>
 
     <section class="section" id="contacto">
       <h2>Reservar turno</h2>
-      <p class="lead">Mandame un mensaje con: <b>1)</b> qué querés trabajar, <b>2)</b> si preferís Mediumnidad, Tarot, Péndulo o Registros Akáshicos, <b>3)</b> tu disponibilidad.</p>
+      <p class="lead">
+        Mandame un mensaje con: <b>1)</b> qué querés trabajar, <b>2)</b> si preferís Mediumnidad, Tarot, Péndulo o Registros Akáshicos, <b>3)</b> tu disponibilidad.
+      </p>
 
       <div class="contactGrid">
         <div class="contactCard">
@@ -607,19 +678,25 @@
             <a class="btn ig" id="sendIg" href="#" rel="noopener">Enviar por Instagram</a>
           </div>
 
-          <div class="hint">Tip: este formulario no “envía” mails: arma el mensaje y lo abre en WhatsApp/IG para que la charla siga ahí.</div>
+          <div class="hint">
+            Tip: este formulario no “envía” mails: arma el mensaje y lo abre en WhatsApp/IG para que la charla siga ahí.
+          </div>
         </div>
 
         <div class="contactCard">
           <h3 style="margin:0; font-size:14px;">Links directos</h3>
-          <p style="margin:8px 0 0; color: rgba(244,243,255,.78); font-size:13px; line-height:1.55;">Si preferís, tocá directo:</p>
+          <p style="margin:8px 0 0; color: rgba(244,243,255,.82); font-size:13px; line-height:1.55;">
+            Si preferís, tocá directo:
+          </p>
 
           <div class="ctaRow" style="margin-top:12px">
             <a class="btn whats" id="directWhats" href="#" rel="noopener">WhatsApp</a>
             <a class="btn ig" id="directIg" href="#" rel="noopener">Instagram</a>
           </div>
 
-          <div class="hint" style="margin-top:12px">Recomendación: agregá tu disponibilidad y una frase tipo “solo por turno”.</div>
+          <div class="hint" style="margin-top:12px">
+            Recomendación: agregá tu disponibilidad y una frase tipo “solo por turno”.
+          </div>
         </div>
       </div>
     </section>
