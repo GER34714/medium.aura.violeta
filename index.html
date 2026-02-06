@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="es-AR">
 <head>
@@ -44,7 +41,6 @@
       --overlay-img: url("https://iili.io/fb6dwQ4.md.jpg");
       --hero-img: url("https://iili.io/fb6EjCG.md.png");
 
-      /* tarjetas claritas */
       --panel-bg: rgba(255,255,255,.085);
       --panel-border: rgba(255,255,255,.22);
       --panel-inner: rgba(255,255,255,.16);
@@ -693,8 +689,11 @@
 
   <script>
     const WHATSAPP_NUMBER = "5491112345678";
-    const INSTAGRAM_USER = "@CIBORG347";
-    const BASE_MSG = "MODO DEMO IG @ciborg347 Hola Julia! 🙌 Quiero reservar una sesión. Te cuento brevemente:";
+
+    // DEMO: Instagram deriva a tu cuenta
+    const INSTAGRAM_USER = "ciborg347";
+
+    const BASE_MSG = "Hola Julia! 🙌 Quiero reservar una sesión. Te cuento brevemente:";
 
     function enc(v){ return encodeURIComponent(v || ""); }
     function whatsappLink(text){ return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + enc(text); }
