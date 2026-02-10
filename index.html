@@ -261,6 +261,12 @@
       border-color: rgba(255,91,214,.26);
     }
 
+    /* NUEVO: botón comprar (mismo sistema, solo otra skin) */
+    .btn.buy{
+      background: linear-gradient(135deg, rgba(155,123,255,.34), rgba(255,91,214,.22));
+      border-color: rgba(255,255,255,.22);
+    }
+
     .btnIcon{
       width:18px; height:18px;
       flex: 0 0 18px;
@@ -371,8 +377,28 @@
 
     .testis{margin-top: 14px; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px;}
     .quote{padding: 14px;}
+
     .quote p{margin:0; color: rgba(244,243,255,.82); font-size: 13px; line-height:1.55}
     .quote .who{margin-top: 10px; font-size: 12px; color: rgba(244,243,255,.70)}
+
+    /* NUEVO: fotitos chiquitas adentro de reseñas */
+    .quote .thumbRow{
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+      margin: 0 0 10px;
+      align-items:center;
+    }
+    .quote .thumb{
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(7,7,18,.10);
+      object-fit: cover;
+      box-shadow: 0 14px 40px rgba(0,0,0,.38);
+      display:block;
+    }
 
     .faq{margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
     details{padding: 12px 14px;}
@@ -438,37 +464,95 @@
     footer a{color: rgba(244,243,255,.88); text-decoration: underline; text-decoration-color: rgba(244,243,255,.25)}
     footer a:hover{text-decoration-color: rgba(244,243,255,.6)}
 
-    /* === NUEVO: Libro + Reseñas en imágenes === */
-    .bookWrap{
-      margin-top: 14px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-    .bookCover{
-      width: min(520px, 100%);
-      height: auto;
-      display:block;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: rgba(7,7,18,.10);
-      box-shadow: 0 26px 78px rgba(0,0,0,.48);
-      filter: drop-shadow(0 14px 40px rgba(155,123,255,.18));
-    }
-    .reviewGrid{
+    /* NUEVO: Sección libro prolija */
+    .bookBox{
       margin-top: 14px;
       display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: 180px 1fr;
+      gap: 14px;
+      align-items:start;
     }
-    .reviewImg{
-      width:100%;
-      height:auto;
-      display:block;
+    .bookCover{
+      width: 180px;
+      height: auto;
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,.16);
       background: rgba(7,7,18,.10);
+      object-fit: cover;
       box-shadow: 0 22px 60px rgba(0,0,0,.42);
+      display:block;
+    }
+    .bookInfo h3{
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -0.2px;
+    }
+    .bookInfo p{
+      margin: 8px 0 0;
+      color: rgba(244,243,255,.82);
+      font-size: 13px;
+      line-height: 1.55;
+      max-width: 78ch;
+    }
+    .bookActions{margin-top: 12px; display:flex; gap:10px; flex-wrap:wrap;}
+
+    /* NUEVO: Modal compra */
+    .modalOverlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 200;
+    }
+    .modalOverlay.open{display:flex;}
+    .modal{
+      width: min(520px, 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      box-shadow: 0 26px 90px rgba(0,0,0,.65);
+      backdrop-filter: blur(14px) saturate(1.12);
+      -webkit-backdrop-filter: blur(14px) saturate(1.12);
+      overflow:hidden;
+    }
+    .modalHeader{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+      padding: 14px 14px 10px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .modalHeader strong{font-size:14px;}
+    .modalClose{
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      color: rgba(244,243,255,.92);
+      cursor:pointer;
+      display:grid; place-items:center;
+      font-size: 18px;
+      line-height: 1;
+    }
+    .modalBody{padding: 14px;}
+    .modalBody p{
+      margin: 0 0 12px;
+      color: rgba(244,243,255,.78);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .buyList{
+      display:grid;
+      gap: 10px;
+    }
+    .buyList a{
+      justify-content:center;
+      width:100%;
     }
 
     @media (max-width: 920px){
@@ -488,7 +572,10 @@
         background-repeat: no-repeat;
       }
       .logoImg{width:40px; height:40px; border-radius: 14px;}
-      .reviewGrid{grid-template-columns: 1fr;}
+
+      .bookBox{grid-template-columns: 1fr; }
+      .bookCover{width: min(220px, 100%); margin: 0 auto;}
+      .quote .thumb{width: 48px; height:48px;}
     }
   </style>
 </head>
@@ -607,15 +694,6 @@
       </div>
     </section>
 
-    <!-- NUEVO: SECCIÓN LIBRO (solo tapa) -->
-    <section class="section" id="libro">
-      <h2>Libro: Planeta K976</h2>
-      <p class="lead">Tapa del libro.</p>
-      <div class="bookWrap">
-        <img class="bookCover" src="https://iili.io/fyc5Yxf.jpg" alt="Tapa del libro Planeta K976" loading="lazy" decoding="async" />
-      </div>
-    </section>
-
     <section class="section" id="servicios">
       <h2>Servicios</h2>
       <p class="lead">Elegí el formato que más se ajuste a tu momento. Si no sabés cuál, me escribís y lo definimos en 2 mensajes.</p>
@@ -644,21 +722,54 @@
 
     <section class="section" id="testimonios">
       <h2>Testimonios</h2>
-      <p class="lead">Reseñas en imágenes.</p>
+      <p class="lead">Reseñas y experiencias de consultantes.</p>
 
-      <!-- NUEVO: RESEÑAS EN IMÁGENES -->
-      <div class="reviewGrid" aria-label="Reseñas">
-        <img class="reviewImg" src="https://iili.io/fyaZf0g.jpg" alt="Reseña 1" loading="lazy" decoding="async" />
-        <img class="reviewImg" src="https://iili.io/fyaZ3s1.jpg" alt="Reseña 2" loading="lazy" decoding="async" />
-        <img class="reviewImg" src="https://iili.io/fyaZKqF.jpg" alt="Reseña 3" loading="lazy" decoding="async" />
-        <img class="reviewImg" src="https://iili.io/fycFVA7.jpg" alt="Reseña 4" loading="lazy" decoding="async" />
-      </div>
-
-      <!-- DEJO LOS TESTIMONIOS DE TEXTO TAL CUAL ESTABAN -->
       <div class="testis">
-        <div class="quote"><p>“Me ayudó a ordenar la cabeza y volver a lo importante. Me quedé con un plan simple para seguir.”</p><div class="who">— Consultante</div></div>
-        <div class="quote"><p>“Lo que más me gustó fue la claridad y el respeto. Sentí un espacio cuidado, sin vueltas.”</p><div class="who">— Consultante</div></div>
-        <div class="quote"><p>“Me sirvió para tomar una decisión que venía pateando. Me quedé mucho más tranquila.”</p><div class="who">— Consultante</div></div>
+        <div class="quote">
+          <div class="thumbRow" aria-label="Reseñas (miniaturas)">
+            <img class="thumb" src="https://iili.io/fyaZf0g.jpg" alt="Reseña (imagen)" loading="lazy" decoding="async" />
+          </div>
+          <p>“Me ayudó a ordenar la cabeza y volver a lo importante. Me quedé con un plan simple para seguir.”</p>
+          <div class="who">— Consultante</div>
+        </div>
+
+        <div class="quote">
+          <div class="thumbRow" aria-label="Reseñas (miniaturas)">
+            <img class="thumb" src="https://iili.io/fyaZ3s1.jpg" alt="Reseña (imagen)" loading="lazy" decoding="async" />
+          </div>
+          <p>“Lo que más me gustó fue la claridad y el respeto. Sentí un espacio cuidado, sin vueltas.”</p>
+          <div class="who">— Consultante</div>
+        </div>
+
+        <div class="quote">
+          <div class="thumbRow" aria-label="Reseñas (miniaturas)">
+            <img class="thumb" src="https://iili.io/fyaZKqF.jpg" alt="Reseña (imagen)" loading="lazy" decoding="async" />
+            <img class="thumb" src="https://iili.io/fycFVA7.jpg" alt="Reseña (imagen)" loading="lazy" decoding="async" />
+          </div>
+          <p>“Me sirvió para tomar una decisión que venía pateando. Me quedé mucho más tranquila.”</p>
+          <div class="who">— Consultante</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUEVO: APARTADO PROLIJO DEL LIBRO + BOTÓN COMPRAR (modal) -->
+    <section class="section" id="libro">
+      <h2>Libro</h2>
+      <p class="lead">Planeta K976</p>
+
+      <div class="bookBox">
+        <img class="bookCover" src="https://iili.io/fyc5Yxf.jpg" alt="Tapa del libro Planeta K976" loading="lazy" decoding="async" />
+
+        <div class="bookInfo">
+          <h3>Planeta K976</h3>
+          <p>Disponible en distintas plataformas. Elegí la que te quede más cómoda.</p>
+
+          <div class="bookActions">
+            <button class="btn buy" id="btnComprar" type="button" aria-haspopup="dialog" aria-controls="buyModal">
+              Comprar el libro
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -739,6 +850,25 @@
     </a>
   </div>
 
+  <!-- NUEVO: MODAL COMPRA -->
+  <div class="modalOverlay" id="buyModal" role="dialog" aria-modal="true" aria-label="Comprar el libro">
+    <div class="modal">
+      <div class="modalHeader">
+        <strong>Comprar “Planeta K976”</strong>
+        <button class="modalClose" id="buyClose" type="button" aria-label="Cerrar">×</button>
+      </div>
+      <div class="modalBody">
+        <p>Elegí dónde comprar:</p>
+        <div class="buyList">
+          <a class="btn buy" id="buyCuspide" href="#" target="_blank" rel="noopener noreferrer">Cúspide (Argentina)</a>
+          <a class="btn buy" id="buyML" href="#" target="_blank" rel="noopener noreferrer">Mercado Libre (Argentina)</a>
+          <a class="btn buy" id="buyBuscalibre" href="#" target="_blank" rel="noopener noreferrer">Buscalibre</a>
+          <a class="btn buy" id="buyBookdelivery" href="#" target="_blank" rel="noopener noreferrer">Internacional (Bookdelivery)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const WHATSAPP_NUMBER = "5491112345678";
 
@@ -789,6 +919,46 @@
         e.preventDefault();
         el.scrollIntoView({behavior:"smooth", block:"start"});
       });
+    });
+
+    // === NUEVO: links compra (los de hoy) ===
+    const BUY_LINKS = {
+      cuspide: "https://cuspide.com/producto/planeta-k976/",
+      mercadolibre: "https://www.mercadolibre.com.ar/planeta-k976/up/MLAU241038353",
+      buscalibre: "https://www.buscalibre.com.ar/libro-planeta-k976/9789878527529/p/63358863",
+      bookdelivery: "https://www.bookdelivery.com/id-en/book-planeta-k976/9789878527529/p/63358863"
+    };
+
+    document.getElementById("buyCuspide").href = BUY_LINKS.cuspide;
+    document.getElementById("buyML").href = BUY_LINKS.mercadolibre;
+    document.getElementById("buyBuscalibre").href = BUY_LINKS.buscalibre;
+    document.getElementById("buyBookdelivery").href = BUY_LINKS.bookdelivery;
+
+    // === NUEVO: modal open/close ===
+    const modal = document.getElementById("buyModal");
+    const openBtn = document.getElementById("btnComprar");
+    const closeBtn = document.getElementById("buyClose");
+
+    function openModal(){
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+    function closeModal(){
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+      openBtn.focus();
+    }
+
+    openBtn.addEventListener("click", openModal);
+    closeBtn.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (e)=>{
+      if(e.target === modal) closeModal();
+    });
+
+    document.addEventListener("keydown", (e)=>{
+      if(e.key === "Escape" && modal.classList.contains("open")) closeModal();
     });
   </script>
 </body>
